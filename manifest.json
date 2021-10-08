@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0"
+    "version": "1.0.0",
     "domain": "input_timetable",
     "name": "Input Timetable",
     "documentation": "https://www.home-assistant.io/integrations/input_timetable",

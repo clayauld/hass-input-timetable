@@ -1,0 +1,9 @@
+{
+    "version": "1.0.0"
+    "domain": "input_timetable",
+    "name": "Input Timetable",
+    "documentation": "https://www.home-assistant.io/integrations/input_timetable",
+    "codeowners": ["@amitfin"],
+    "quality_scale": "internal",
+    "iot_class": "calculated"
+}

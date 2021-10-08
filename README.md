@@ -17,6 +17,7 @@ You will need to register this card on the Resources screen. Follow instructions
 Add the card to the UI by following this sample:
 
 ```
+type: custom:timetable-card
 title: Timers
 toggle: input_boolean.timers
 entities:

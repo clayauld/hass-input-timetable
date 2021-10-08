@@ -13,6 +13,21 @@ You will need to register this card on the Resources screen. Follow instructions
 ```
 /config/www/input-timetable/timetable-card.js
 ```
+
+Add the card to the UI by following this sample:
+
+```
+title: Timers
+toggle: input_boolean.timers
+entities:
+  - entity: input_timetable.timer1
+    name: light1
+  - entity: input_timetable.timer2
+    name: light2
+```
+
+
+
 # Credits
 ## Notes from the Pull Request: https://github.com/home-assistant/core/pull/41385#issuecomment-938909888
 

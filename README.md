@@ -1,4 +1,20 @@
-See PR here: https://github.com/home-assistant/core/pull/41385#issuecomment-938909888
+# Installation instructions:
+
+Simply clone the repo to the /config/custom_components directory in Home Assistant. Then run the following:
+
+```bash
+cd hass-input-timetable
+bash ./install.sh
+```
+This will put a symlink to the timetable-card.js file at /config/www/timetable-card.js.
+
+You will need to register this card on the Resources screen. Follow instructions [here](https://developers.home-assistant.io/docs/frontend/custom-ui/registering-resources) and use the following info:
+
+```
+/config/www/input-timetable/timetable-card.js
+```
+# Credits
+## Notes from the Pull Request: https://github.com/home-assistant/core/pull/41385#issuecomment-938909888
 
 @MarkusHornbach, thanks!
 Yes, you can use it as a custom component. All you need to do is to copy the files in the PR under homeassistant/components/input_timetable on to HA at /config/custom_components/input_timetable (and restart HA).

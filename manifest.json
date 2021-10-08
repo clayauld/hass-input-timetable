@@ -2,7 +2,7 @@
     "version": "1.0.0",
     "domain": "input_timetable",
     "name": "Input Timetable",
-    "documentation": "https://www.home-assistant.io/integrations/input_timetable",
+    "documentation": "https://github.com/home-assistant/core/pull/41385#issuecomment-938909888",
     "codeowners": ["@amitfin"],
     "quality_scale": "internal",
     "iot_class": "calculated"

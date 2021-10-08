@@ -4,14 +4,14 @@ Simply clone the repo to the /config/custom_components directory in Home Assista
 
 ```bash
 cd hass-input-timetable
-bash ./install.sh
+cp ./timetable-card.js ../../www/timetable-card.js
 ```
-This will put a symlink to the timetable-card.js file at /config/www/timetable-card.js.
+This will put the timetable-card.js file at /config/www/timetable-card.js.
 
 You will need to register this card on the Resources screen. Follow instructions [here](https://developers.home-assistant.io/docs/frontend/custom-ui/registering-resources) and use the following info:
 
 ```
-/config/www/input-timetable/timetable-card.js
+/local/timetable-card.js
 ```
 
 Add the card to the UI by following this sample:

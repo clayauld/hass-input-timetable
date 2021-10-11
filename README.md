@@ -1,5 +1,3 @@
-# Note: THIS IS NOT WORKING PROPERLY YET!!!
-
 # Installation instructions:
 
 Simply clone the repo to the /config/custom_components directory in Home Assistant and rename the directory to `input_timetable`:

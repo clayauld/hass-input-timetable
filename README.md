@@ -2,10 +2,11 @@
 
 # Installation instructions:
 
-Simply clone the repo to the /config/custom_components directory in Home Assistant. Then run the following:
+Simply clone the repo to the /config/custom_components directory in Home Assistant and rename the directory to `input_timetable`:
 
-```bash
-cd hass-input-timetable
+``bash
+git clone https://github.com/clayauld/hass-input-timetable.git input_timetable
+cd input_timetable
 cp ./timetable-card.js ../../www/timetable-card.js
 ```
 This will put the timetable-card.js file at /config/www/timetable-card.js.

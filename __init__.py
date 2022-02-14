@@ -16,13 +16,13 @@ from homeassistant.const import (
     STATE_OFF,
     STATE_ON,
 )
-from homeassistant.core import CALLBACK_TYPE, callback
+from homeassistant.core import CALLBACK_TYPE, HomeAssistant, callback
 from homeassistant.helpers import collection, event as event_helper
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_component import EntityComponent
 from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.helpers.storage import Store
-from homeassistant.helpers.typing import ConfigType, HomeAssistantType, ServiceCallType
+from homeassistant.helpers.typing import ConfigType, ServiceCallType
 import homeassistant.util.dt as dt_util
 
 _LOGGER = logging.getLogger(__name__)
@@ -105,7 +105,7 @@ UPDATE_FIELDS = {
 }
 
 
-async def async_setup(hass: HomeAssistantType, config: ConfigType) -> bool:
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up an input timetable."""
     component = EntityComponent(_LOGGER, DOMAIN, hass)
     id_manager = collection.IDManager()
@@ -314,10 +314,12 @@ class InputTimeTable(RestoreEntity):
         self._update_state()
 
     def _schedule_update(self) -> None:
+        """Schedule a timer for the point when the state should be changed."""
         if self._event_unsub:
             self._event_unsub()
             self._event_unsub = None
 
+        # If there is one entry (or zero), the state never changes.
         if not self._timetable or len(self._timetable) == 1:
             return
 
@@ -325,6 +327,8 @@ class InputTimeTable(RestoreEntity):
         time = now.time()
         today = now.date()
         prev = MIDNIGHT
+
+        # Find the earliest entry which is after "now".
         for event in self._timetable:
             if prev <= time < event.time:
                 next_change = datetime.datetime.combine(
@@ -334,6 +338,7 @@ class InputTimeTable(RestoreEntity):
                 break
             prev = event.time
         else:
+            # All entries have passed (today). Use 1st tomorrow's entry.
             next_change = datetime.datetime.combine(
                 today + datetime.timedelta(days=1),
                 self._timetable[0].time,
